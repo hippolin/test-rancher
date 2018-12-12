@@ -1,0 +1,20 @@
+#cloud-config
+runcmd:
+- [mkdir, /run/lock]
+rancher:
+  console: ubuntu
+  docker:
+    debug: true
+  services:
+    user-volumes:
+      volumes:
+      - /home:/home
+      - /opt:/opt
+      - /var/lib/kubelet:/var/lib/kubelet
+      - /etc/kubernetes:/etc/kubernetes
+      - /etc/cni:/etc/cni
+  services_include:
+    open-iscsi: true
+    open-vm-tools: true
+ssh_authorized_keys:
+  - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDGl+YlQHyDx6rWlzoEB/pwqNWCx0hJcHkJHSXOdtTEpPSwHXygwGXZpgBEr5COCrk7m9BFXeTDVprWe7xT7XW3xF+6VssLcv1Yd2qwLGz+7E02JtN2/7lpiX+E4n+7cNVa6SInKtTDlpYUbhnlbcVAeZMt5Qew0tCBDBNNVjC5g4NGDQE44I7yLs2VH19gR6VbQopC6timBjaRh9+dzivVdAsCmiXVOJNvlu4J4Y7VVvdGc2EvOnbJhs2fq+oF8EBEbc3MD4NimFcmnpqGdlNrnnHtYbkl8TeIeYIf3n5LP9SVfpzSeqjxIdjWfMKDFc+7UEub/stq5CQjvVDLpiWB
